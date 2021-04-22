@@ -13,13 +13,13 @@ const usersRouter = require("./routes/users");
 var app = express();
 
 var oktaClient = new okta.Client({
-  orgUrl: 'dev-91636666.okta.com',
-  token: '00WaaD-VUIi7v_DaqNYvwZbfmiCfm3zk_OHdapRO0k'
+  orgUrl: 'https://dev-28194935.okta.com',
+  token: '00KfGUFhkevyVbZ_xujbg6wTzd50MkxYzCjrTanbzP'
 });
 const oidc = new ExpressOIDC({
-  issuer: "https://dev-91636666.okta.com/oauth2/default",
-  client_id: '0oamep4761rO1DGt35d6',
-  client_secret: 'PstIYOFPRDEwFB9ajIitq2LYlm07eTNN2Fc2GnL4',
+  issuer: "https://dev-28194935.okta.com/oauth2/default",
+  client_id: '0oamlkv6giadTRQdl5d6',
+  client_secret: 'foH0WADDE1rcIJuWkAQGr-qT8j6W5Y27R7mnKBei',
   appBaseUrl: 'http://localhost:3000',
   scope: "openid profile",
   routes: {
@@ -45,7 +45,9 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'asda234234234sdasdkjasd@#$@#$kadadskjasl;dkasd;la@#$@#$sdl;kasdlkasdl;asdaslkdasd',
