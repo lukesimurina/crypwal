@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+<h2>Wallet Page</h2>
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}! Here is your Wallet
+  <form action="/addWalletItem/" method = "post">{% csrf_token %}
+    <input type="text" name="content">
+    <input type="text" name="amount">
+    <input type="submit" value="Add Wallet Item">
+</form> 
+  <ul>
+    {% for i in all_items %} 
+    <li>Name: {{i.content}}<br>Amount: {{i.amount}}<br>
+      <form action="/deleteWalletItem/{{i.id}}/" method = "post">{% csrf_token %}
+        <input type="submit" value="Delete">
+      </form>  
+    </li>
+    {% endfor %}
+</ul> 
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+{% endif %}
+{% endblock %}
