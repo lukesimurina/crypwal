@@ -35,6 +35,11 @@
       <input type="text" id="search" placeholder="Search Wallet" onkeyup="searchFunction()">
     </form>
   </div>
+
+  <h2>Wallet Value: ${{total}}</h2>
+  <h3>1D Wallet Value: ${{day_total}}</h3>
+  <h4 style="{% if total < day_total %}color: red{% elif total == day_total %}color: black {% else %}color: green{% endif %}">%{{day_change}}</h4>
+
   <ul id="wallet-list">
     {% for i in all_items %} 
     <li>
@@ -42,6 +47,10 @@
       <ul>
         <li id="coin-name"><a href="#">{{i.content}}</a></li>
         <li id="coin-amount">Amount: {{i.amount}}</li>
+        <li id="coin-price">Price: {{i.price}}</li>
+        <li id="coin-value">Value: {{i.value}}</li>
+        <li id="coin-value-day">Value 1 Day Ago: {{i.dayValue}}</li>
+        <li id="coin-value-change" style="{% if i.value < i.dayValue %}color: red {% elif i.value == i.dayValue %}color: black {% else %}color: green{% endif %}" >Change: %{{i.dayValueChange}}</li>
         <li id="coin-delete">
           <form autocomplete="off" action="/deleteWalletItem/{{i.id}}/" method = "post">{% csrf_token %}
             <input id="delete-button" type="submit" value="Delete">
