@@ -7,17 +7,47 @@
 {% block content %}
 {% if user.is_authenticated %}
   Hi {{ user.username }}! Here is your Wallet
-  <form action="/addWalletItem/" method = "post">{% csrf_token %}
+  <form autocomplete=off action="/addWalletItem/" method = "post">{% csrf_token %}
     <input type="text" name="content">
     <input type="text" name="amount">
     <input type="submit" value="Add Wallet Item">
 </form> 
-  <ul>
+<script>
+  function searchFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById('search');
+    filter = input.value.toUpperCase();
+    li = document.querySelectorAll("li#coin-name");
+  
+    for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByTagName("a")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].parentElement.parentElement.style.display = "";
+      } else {
+        li[i].parentElement.parentElement.style.display = "none";
+      }
+    }
+  }
+</script>
+  <div class="search-wrapper">
+    <form autocomplete="off">
+      <input type="text" id="search" placeholder="Search Wallet" onkeyup="searchFunction()">
+    </form>
+  </div>
+  <ul id="wallet-list">
     {% for i in all_items %} 
-    <li>Name: {{i.content}}<br>Amount: {{i.amount}}<br>
-      <form action="/deleteWalletItem/{{i.id}}/" method = "post">{% csrf_token %}
-        <input type="submit" value="Delete">
-      </form>  
+    <li>
+      
+      <ul>
+        <li id="coin-name"><a href="#">{{i.content}}</a></li>
+        <li id="coin-amount">Amount: {{i.amount}}</li>
+        <li id="coin-delete">
+          <form autocomplete="off" action="/deleteWalletItem/{{i.id}}/" method = "post">{% csrf_token %}
+            <input id="delete-button" type="submit" value="Delete">
+          </form> 
+        </li>
+      </ul> 
     </li>
     {% endfor %}
 </ul> 

@@ -1,6 +1,11 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .models import WalletItem
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+ENV_API_KEY = os.getenv('COIN_API_KEY')
 
 def index(request):
     if request.user.is_authenticated == False:
@@ -13,7 +18,7 @@ def index(request):
 def addWalletView(request):
     x = request.POST['content']
     amt = request.POST['amount']
-    if x != '' and amt != '' and isinstance(amt, str) == False:
+    if x != '' and amt != '':
         new_item = WalletItem(user = request.user, content = x, amount = float(amt))
         new_item.save()
         return HttpResponseRedirect('/')
