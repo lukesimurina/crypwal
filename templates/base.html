@@ -6,6 +6,9 @@
 </head>
 <body>
   <h1><a href="{% url 'home' %}">Crypwal</a></h1>
+
+  {% include 'messages.html' %}
+
   <main>
     {% block content %}
     {% endblock %}

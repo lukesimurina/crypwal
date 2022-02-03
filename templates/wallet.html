@@ -8,8 +8,8 @@
 {% if user.is_authenticated %}
   Hi {{ user.username }}! Here is your Wallet
   <form autocomplete=off action="/addWalletItem/" method = "post">{% csrf_token %}
-    <input type="text" name="content">
-    <input type="text" name="amount">
+    <input type="text" name="content" placeholder="Coin ticker">
+    <input type="text" name="amount" placeholder="Amount">
     <input type="submit" value="Add Wallet Item">
 </form> 
 <script>

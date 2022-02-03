@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .models import WalletItem
+from django.contrib import messages
 ######################################################################################
 ############### CRYPTO PRICE GETTER ##################################################
 ######################################################################################
@@ -118,22 +119,22 @@ def index(request):
         all_wallet_item_names = []
         for i in all_wallet_items:
             all_wallet_item_names.append(i.content)
-        print(all_wallet_item_names)
-        prices = getCryptoPrice(all_wallet_item_names, 'USD')
-        print(prices)
+        prices = {}
         dayPrices = {}
-        for i in all_wallet_item_names:
-            dayPrices[i] = getCryptoPriceDay(i, 'USD')[all_wallet_items.get(content=i).content]['USD']
-        print(dayPrices)
-        
-        for i in all_wallet_items:
-            i.price = prices[i.content]['USD']
-            i.value = round(prices[i.content]['USD'] * i.amount, 2)
-            i.dayValue = round(dayPrices[i.content] * i.amount, 2)
-            previous = i.dayValue
-            current = i.value
-            i.dayValueChange = round((current - previous) / previous * 100, 2)
-            i.save()
+        if all_wallet_item_names != []:
+            prices = getCryptoPrice(all_wallet_item_names, 'USD')
+            dayPrices = {}
+            for i in all_wallet_item_names:
+                dayPrices[i] = getCryptoPriceDay(i, 'USD')[all_wallet_items.get(content=i).content]['USD']
+            
+            for i in all_wallet_items:
+                i.price = prices[i.content]['USD']
+                i.value = round(prices[i.content]['USD'] * i.amount, 2)
+                i.dayValue = round(dayPrices[i.content] * i.amount, 2)
+                previous = i.dayValue
+                current = i.value
+                i.dayValueChange = round((current - previous) / previous * 100, 2)
+                i.save()
         
         total = 0
         if prices is not None:
@@ -156,19 +157,38 @@ def index(request):
 def addWalletView(request):
     x = request.POST['content']
     amt = request.POST['amount']
-    try:
-        amt = float(amt)
-    except:
-        return HttpResponseRedirect('/')
-    print(type(amt))
-    if x != '' and amt != '':
-        new_item = WalletItem(user = request.user, content = x, amount = float(amt))
-        new_item.save()
-        return HttpResponseRedirect('/')
-    else:
-        return HttpResponseRedirect('/')
+    if get_price(x, 'USD') is not None:
+        if x != '' and WalletItem.objects.filter(user=request.user, content=x).exists():
+            try:
+                amt = float(amt)
+            except:
+                messages.warning(request, 'Amount must be a number')
+                return HttpResponseRedirect('/')
+            if amt != '':
+                existing_amt = WalletItem.objects.get(user=request.user, content=x).amount
+                WalletItem.objects.filter(user=request.user, content=x).update(amount=existing_amt + amt)
+                messages.success(request, 'Added ' + str(amt) + ' ' + x + ' to your wallet')
+            else:
+                messages.info(request, 'Please enter a valid item and amount')
+                return HttpResponseRedirect('/')
+        else:
+            try:
+                amt = float(amt)
+            except:
+                messages.info(request, 'Amount must be a number')
+                return HttpResponseRedirect('/')
+            if x != '' and amt != '':
+                new_item = WalletItem(user = request.user, content = x, amount = float(amt))
+                new_item.save()
+                messages.success(request, 'Added ' + str(amt) + ' ' + x + ' to your wallet')
+                return HttpResponseRedirect('/')
+            else:
+                messages.info(request, 'Please enter a valid item and amount')
+                return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/')
 
 def deleteWalletView(request, i):
     y = WalletItem.objects.get(id= i)
     y.delete()
+    messages.success(request, y.content + ' deleted from wallet')
     return HttpResponseRedirect('/') 
