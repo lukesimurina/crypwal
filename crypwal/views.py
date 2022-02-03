@@ -155,7 +155,7 @@ def index(request):
         return render(request, 'wallet.html',{'all_items':all_wallet_items,'prices':prices, 'total':total, 'day_total':day_total, 'day_change':day_change})
     
 def addWalletView(request):
-    x = request.POST['content']
+    x = request.POST['content'].upper()
     amt = request.POST['amount']
     if get_price(x, 'USD') is not None:
         if x != '' and WalletItem.objects.filter(user=request.user, content=x).exists():

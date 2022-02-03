@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+    --jet: #353535;
+    --ming: #3C6E71;
+    --white: #FFFFFF;
+    --gainsboro: #D9D9D9;
+    --indigo-dye: #284B63;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+}
+
+body {
+    background-color: var(--jet);
+    font-family: 'Noto Sans', sans-serif;
+    min-height: 1000px;
+}
+
+
+h1 {
+    text-align: center;
+    margin: 20px;
+    font-size: 3em;
+}
+
+h1 a {
+    text-decoration: none;
+    color: var(--gainsboro);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#welcome {
+    color: white;
+    margin: 20px;
+}
+
+#wallet_form {
+    background-color: var(--ming);
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    min-width: 400px;
+}
+
+#container-1 {
+    margin: 10px;
+}
+
+#input_content {
+    background: white;
+    width: 10vw;
+    height: auto;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    font-family: 'Noto Sans', sans-serif;
+    box-shadow: 0;
+    transition: box-shadow 200ms ease-in-out;
+    margin: 5px;
+    min-width: 150px;
+}
+
+#input_content:focus {
+    outline: none;
+    box-shadow: 0 6px 2px -2px rgba(71, 71, 71, 0.5);
+}
+
+#input_amount {
+    background: white;
+    width: 10vw;
+    height: auto;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    font-family: 'Noto Sans', sans-serif;
+    box-shadow: 0;
+    transition: box-shadow 200ms ease-in-out;
+    margin: 5px;
+    min-width: 150px;
+}
+
+#input_amount:focus {
+    outline: none;
+    box-shadow: 0 6px 2px -2px rgba(71, 71, 71, 0.5);
+}
+
+
+#input_add {
+    border: 5px solid white;
+    background-color: transparent;
+    padding: 5px;
+    width: 25%;
+    border-radius: 10px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Noto Sans', sans-serif;
+    transition: background-color 200ms ease-in-out, color 200ms ease-in-out, box-shadow 200ms ease-in-out;
+    
+}
+
+#input_add:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 6px 2px -2px rgba(71, 71, 71, 0.5);
+}
+
+.search-wrapper {
+    padding: 20px;
+}
+#search {
+    background: white;
+    width: 30vw;
+    height: auto;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    font-family: 'Noto Sans', sans-serif;
+    box-shadow: 0;
+    transition: box-shadow 200ms ease-in-out;
+    margin: 5px;
+    min-width: 400px;
+}
+
+.wallet-wrapper {
+    background: var(--white);
+    width: 50vw;
+    border-radius: 50px;
+    padding: 20px;
+    text-align: center;
+    min-width: 400px;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 5px;
+}
+h3 {
+    font-size: 0.7em;
+    margin: 5px;
+}
+h4 {font-size: 1em;
+    margin: 5px;}
+
+#wallet-list {
+    list-style: none;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+#wallet-item {
+    list-style: none;
+    background: rgb(236, 236, 236);
+    width: 30%;
+    border-radius: 30px;
+    transition: background-color 100ms ease-in-out, box-shadow 100ms ease-in-out;
+    margin: 10px;
+    min-height: 400px;
+    font-size: 1em
+}
+
+#wallet-item:hover {
+    background: rgb(218, 218, 218);
+    box-shadow: 0 6px 2px -2px rgba(71, 71, 71, 0.5);
+}
+
+.coin-info-list {
+    list-style: none;
+}
+
+.coin-info-list li {
+    list-style: none;
+    margin: 5px;
+}
+
+#coin-name {}
+#coin-name a {
+    color: var(--ming);
+    text-decoration: none;
+}
+#coin-amount {}
+#coin-price {}
+#coin-value {}
+#coin-value-day {}
+#coin-value-change {}
+#coin-delete input{
+    color: black;
+    background-color: rgb(255, 108, 108);
+    padding: 10px 16px 10px 16px;
+    border: 0;
+    text-transform: uppercase;
+    border-radius: 10px;
+    transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
+    margin: 5px;
+}
+
+#coin-delete input:hover {
+    background-color: rgb(255, 61, 61);
+    color: white;
+}
+
+#logout {
+    color: black;
+    background-color: rgb(161, 123, 123);
+    margin: 10px;
+    padding: 5px;
+    border: 0;
+    text-transform: uppercase;
+    border-radius: 10px;
+    transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
+    position: relative;
+}
+
+#logout:hover {
+    background-color: rgb(138, 46, 46);
+    color: white;
+}

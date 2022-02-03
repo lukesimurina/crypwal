@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>{% block title %}Crypwal{% endblock %}</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'walletstyle.css' %}">
 </head>
 <body>
   <h1><a href="{% url 'home' %}">Crypwal</a></h1>

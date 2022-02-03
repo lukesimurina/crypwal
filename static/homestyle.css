@@ -1,0 +1,12 @@
+:root {
+    --jet: #353535;
+    --ming: #3C6E71;
+    --white: #FFFFFF;
+    --gainsboro: #D9D9D9;
+    --indigo-dye: #284B63;
+}
+
+h1 {
+    text-decoration: none;
+    color: var(--gainsboro);
+}
