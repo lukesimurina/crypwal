@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 :root {
     --jet: #353535;
-    --ming: #3C6E71;
-    --white: #FFFFFF;
-    --gainsboro: #D9D9D9;
-    --indigo-dye: #284B63;
+    --ming: #3c6e71;
+    --white: #ffffff;
+    --gainsboro: #d9d9d9;
+    --indigo-dye: #284b63;
 }
 
 * {
@@ -18,10 +18,9 @@ html {
 
 body {
     background-color: var(--jet);
-    font-family: 'Noto Sans', sans-serif;
+    font-family: "Noto Sans", sans-serif;
     min-height: 1000px;
 }
-
 
 h1 {
     text-align: center;
@@ -67,7 +66,7 @@ main {
     padding: 10px;
     border: 0;
     border-radius: 10px;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: "Noto Sans", sans-serif;
     box-shadow: 0;
     transition: box-shadow 200ms ease-in-out;
     margin: 5px;
@@ -86,7 +85,7 @@ main {
     padding: 10px;
     border: 0;
     border-radius: 10px;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: "Noto Sans", sans-serif;
     box-shadow: 0;
     transition: box-shadow 200ms ease-in-out;
     margin: 5px;
@@ -98,7 +97,6 @@ main {
     box-shadow: 0 6px 2px -2px rgba(71, 71, 71, 0.5);
 }
 
-
 #input_add {
     border: 5px solid white;
     background-color: transparent;
@@ -108,9 +106,9 @@ main {
     color: white;
     text-transform: uppercase;
     font-weight: bold;
-    font-family: 'Noto Sans', sans-serif;
-    transition: background-color 200ms ease-in-out, color 200ms ease-in-out, box-shadow 200ms ease-in-out;
-    
+    font-family: "Noto Sans", sans-serif;
+    transition: background-color 200ms ease-in-out, color 200ms ease-in-out,
+        box-shadow 200ms ease-in-out;
 }
 
 #input_add:hover {
@@ -122,6 +120,7 @@ main {
 .search-wrapper {
     padding: 20px;
 }
+
 #search {
     background: white;
     width: 30vw;
@@ -129,7 +128,7 @@ main {
     padding: 10px;
     border: 0;
     border-radius: 10px;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: "Noto Sans", sans-serif;
     box-shadow: 0;
     transition: box-shadow 200ms ease-in-out;
     margin: 5px;
@@ -149,12 +148,16 @@ h2 {
     font-size: 1.5em;
     margin: 5px;
 }
+
 h3 {
     font-size: 0.7em;
     margin: 5px;
 }
-h4 {font-size: 1em;
-    margin: 5px;}
+
+h4 {
+    font-size: 1em;
+    margin: 5px;
+}
 
 #wallet-list {
     list-style: none;
@@ -164,6 +167,7 @@ h4 {font-size: 1em;
     flex-wrap: wrap;
     align-items: center;
 }
+
 #wallet-item {
     list-style: none;
     background: rgb(236, 236, 236);
@@ -172,7 +176,7 @@ h4 {font-size: 1em;
     transition: background-color 100ms ease-in-out, box-shadow 100ms ease-in-out;
     margin: 10px;
     min-height: 400px;
-    font-size: 1em
+    font-size: 1em;
 }
 
 #wallet-item:hover {
@@ -189,17 +193,30 @@ h4 {font-size: 1em;
     margin: 5px;
 }
 
-#coin-name {}
+#coin-name {
+}
+
 #coin-name a {
     color: var(--ming);
     text-decoration: none;
 }
-#coin-amount {}
-#coin-price {}
-#coin-value {}
-#coin-value-day {}
-#coin-value-change {}
-#coin-delete input{
+
+#coin-amount {
+}
+
+#coin-price {
+}
+
+#coin-value {
+}
+
+#coin-value-day {
+}
+
+#coin-value-change {
+}
+
+#coin-delete input {
     color: black;
     background-color: rgb(255, 108, 108);
     padding: 10px 16px 10px 16px;
