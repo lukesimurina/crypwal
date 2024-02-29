@@ -1,11 +1,23 @@
-# crypwal
+## Crypwal
 
-Track your crypto wallet value.
+Track the value of your cryptocurrency portfolio in one convenient place.
 
-Enter the amount of coin you own of each coin you own and this app with track your portfolio value over time.
+**Features:**
 
-Dependencies in requirements.txt file or:
-Django==3.2.3
-requests==2.26.0
+* Create an account and securely log in.
+* Add your cryptocurrency holdings and their quantities.
+* Track your portfolio's total value in real-time.
+* Monitor historical price data and track your portfolio's performance over time.
 
-Use "pip install -r requirements.txt"
+**Getting Started:**
+
+1. **Download the project files:**
+2. **Install dependencies:** Open a terminal and run `pip install -r requirements.txt`
+3. **Enter the virtual environment (venv):** run `.\venv\Scripts\activate`
+4. **Migrate the django project:** run `python manage.py migrate`
+5. **Start the app:** run `python manage.py runserver`
+
+**Requirements:**
+
+* Python 3.6 or later
+* Packages listed in `requirements.txt`
