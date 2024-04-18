@@ -1,68 +1,97 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../static/walletstyle.css">
-  </head>
-  <body>
-    <h1>
-      <a href="{% url 'home' %}">Crypwal</a>
-    </h1>
-    <main> <p id="welcome">Hi {{ user.username }}! Here is your Wallet</p> 
-        <form id="wallet_form" autocomplete=off>
-        <div id="container-1">
-            <input id="input_content" type="text" name="content" placeholder="Coin ticker">
-            <input id="input_amount" type="text" name="amount" placeholder="Amount">
-        </div>
-        <input id="input_add" type="submit">
-      </form>
-      <script>
-        function searchFunction() {
-          var input, filter, ul, li, a, i, txtValue;
-          input = document.getElementById('search');
-          filter = input.value.toUpperCase();
-          li = document.querySelectorAll("li#coin-name");
-          for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("a")[0];
-            txtValue = a.textContent || a.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              li[i].parentElement.parentElement.style.display = "";
-            } else {
-              li[i].parentElement.parentElement.style.display = "none";
-            }
-          }
-        }
-      </script>
-      <div class="search-wrapper">
-        <form autocomplete="off">
-          <input type="text" id="search" placeholder="Search Wallet" onkeyup="searchFunction()">
-        </form>
-      </div>
-        <div class="wallet-wrapper">
-            <h2>Wallet Value: ${{total}}</h2>
-            <h3>1D Wallet Value: ${{day_total}}</h3>
-            <h4 style="">%{{day_change}}</h4>
-            <ul id="wallet-list">
-                <li id="wallet-item">
-                <ul class="coin-info-list">
-                    <li id="coin-name">
-                    <a href="#">{{i.content}}</a>
-                    </li>
-                    <li id="coin-amount">Amount: {{i.amount}}</li>
-                    <li id="coin-price">Price: {{i.price}}</li>
-                    <li id="coin-value">Value: {{i.value}}</li>
-                    <li id="coin-value-day">Value 1 Day Ago: {{i.dayValue}}</li>
-                    <li id="coin-value-change" style="{% if i.value < i.dayValue %}color: red {% elif i.value == i.dayValue %}color: black {% else %}color: green{% endif %}">Change: %{{i.dayValueChange}}
-                    </li>
-                    <li id="coin-delete">
-                    <form autocomplete="off"><input id="delete-button" type="submit" value="Delete">
-                    </form>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="../static/walletstyle.css" />
+    </head>
+    <body>
+        <h1>
+            <a href="{% url 'home' %}">Crypwal</a>
+        </h1>
+        <main>
+            <p id="welcome">Hi {{ user.username }}! Here is your Wallet</p>
+            <form id="wallet_form" autocomplete="off">
+                <div id="container-1">
+                    <input
+                        id="input_content"
+                        type="text"
+                        name="content"
+                        placeholder="Coin ticker"
+                    />
+                    <input
+                        id="input_amount"
+                        type="text"
+                        name="amount"
+                        placeholder="Amount"
+                    />
+                </div>
+                <input id="input_add" type="submit" />
+            </form>
+            <script>
+                function searchFunction() {
+                    var input, filter, ul, li, a, i, txtValue;
+                    input = document.getElementById("search");
+                    filter = input.value.toUpperCase();
+                    li = document.querySelectorAll("li#coin-name");
+                    for (i = 0; i < li.length; i++) {
+                        a = li[i].getElementsByTagName("a")[0];
+                        txtValue = a.textContent || a.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            li[i].parentElement.parentElement.style.display =
+                                "";
+                        } else {
+                            li[i].parentElement.parentElement.style.display =
+                                "none";
+                        }
+                    }
+                }
+            </script>
+            <div class="search-wrapper">
+                <form autocomplete="off">
+                    <input
+                        type="text"
+                        id="search"
+                        placeholder="Search Wallet"
+                        onkeyup="searchFunction()"
+                    />
+                </form>
+            </div>
+            <div class="wallet-wrapper">
+                <h2>Wallet Value: ${{total}}</h2>
+                <h3>1D Wallet Value: ${{day_total}}</h3>
+                <h4 style="">{{day_change}}%</h4>
+                <ul id="wallet-list">
+                    <li id="wallet-item">
+                        <ul class="coin-info-list">
+                            <li id="coin-name">
+                                <a href="#">{{i.content}}</a>
+                            </li>
+                            <li id="coin-amount">Amount: {{i.amount}}</li>
+                            <li id="coin-price">Price: {{i.price}}</li>
+                            <li id="coin-value">Value: {{i.value}}</li>
+                            <li id="coin-value-day">
+                                Value 1 Day Ago: {{i.dayValue}}
+                            </li>
+                            <li
+                                id="coin-value-change"
+                                style="{% if i.value < i.dayValue %}color: red {% elif i.value == i.dayValue %}color: black {% else %}color: green{% endif %}"
+                            >
+                                Change: {{i.dayValueChange}}%
+                            </li>
+                            <li id="coin-delete">
+                                <form autocomplete="off">
+                                    <input
+                                        id="delete-button"
+                                        type="submit"
+                                        value="Delete"
+                                    />
+                                </form>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
-                </li>
-            </ul>
-        </div>
-      <button id="logout">Log Out</button>
-    </main>
-  </body>
+            </div>
+            <button id="logout">Log Out</button>
+        </main>
+    </body>
 </html>
